@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:59:43 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/26 11:51:11 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 12:01:35 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /**s
  * @param s storage might be empity
@@ -103,7 +103,7 @@ static char	*gnl_read(char **s, char **b, ssize_t i)
  */
 char	*get_next_line(int fd)
 {
-	static char	*storage;
+	static char	*storage[1024];
 	char		*line;
 	char		*buf;
 	ssize_t		i;
@@ -112,7 +112,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if ((read(fd, NULL, 0) == -1) || (fd < 0 || fd > 1024) || BUFFER_SIZE <= 0)
 		return (0);
-	buf = ft_strchr(storage, '\n');
+	buf = ft_strchr(storage[fd], '\n');
 	if (!buf)
 	{
 		buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -121,11 +121,11 @@ char	*get_next_line(int fd)
 		while (line == NULL && i > 0)
 		{
 			i = read(fd, buf, BUFFER_SIZE);
-			line = gnl_read(&storage, &buf, i);
+			line = gnl_read(&storage[fd], &buf, i);
 		}
 		free(buf);
 		return (line);
 	}
-	line = gnl_getline(&storage, (buf - storage) + 1);
+	line = gnl_getline(&storage[fd], (buf - storage[fd]) + 1);
 	return (line);
 }
