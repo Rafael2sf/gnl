@@ -6,15 +6,14 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:32:15 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/26 11:56:24 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 12:34:41 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
-# include <fcntl.h>
 # include <unistd.h>
 
 char		*get_next_line(int fd);

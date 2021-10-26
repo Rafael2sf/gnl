@@ -6,16 +6,19 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:59:43 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/26 12:01:35 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 13:05:51 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-/**s
+/**
+ * Allocates len + 1 bytes and copies the string. 
+ * Merges storage with new line, 
+ * and stores the reminder of buf in storage.
  * @param s storage might be empity
- * @param b buffer containing a new line
- * @param len the size of the new line-ended string in buffer 
+ * @param b buf containing a new line
+ * @param len line size
 */
 static char	*gnl_trim(char **s, char **b, ssize_t len)
 {	
@@ -38,6 +41,11 @@ static char	*gnl_trim(char **s, char **b, ssize_t len)
 }
 
 /**
+ * Allocared n bytes + 1 and copies the string. 
+ * Then updates the storage keeping the remainder.
+ * @param s storage containing newline
+ * @param n the size of the new line
+ * @param return returns the new line
  */
 char	*gnl_getline(char **s, ssize_t n)
 {
@@ -61,9 +69,14 @@ char	*gnl_getline(char **s, ssize_t n)
 }
 
 /**
- * @param s storage
- * @param b just read
- * @param i result of read
+ * If i is 0, it means you reached end of file, 
+ * therefore it returns a pointer to storage. 
+ * Otherwise looks for a newline in buf. If true calls gnl_trim, 
+ * else merges storage with buf
+ * @param s storage string
+ * @param b buffer string
+ * @param i result of read()
+ * @param return returns the new line
 */
 static char	*gnl_read(char **s, char **b, ssize_t i)
 {
@@ -71,14 +84,11 @@ static char	*gnl_read(char **s, char **b, ssize_t i)
 	char	*tmp;
 
 	ptr = NULL;
-	if (i == -1)
-		return (NULL);
-	if (i == 0)
+	if (i <= 0)
 	{
-		if (*s)
+		if (i == 0 && *s)
 		{
-			ptr = ft_strdup(*s);
-			free(*s);
+			ptr = (*s);
 			(*s) = NULL;
 		}
 		return (ptr);
@@ -98,8 +108,11 @@ static char	*gnl_read(char **s, char **b, ssize_t i)
 }
 
 /**
- * @param fd file descriptor to read from
- * @param return next line in fd
+ * Looks for a new line in storage. 
+ * if true calls gnl_getline to get line from storage 
+ * else allocates buffer, reads BUFFER_SIZE and calls gnl_read.
+ * @param fd file descriptor
+ * @param return a pointer to the line otherwise null
  */
 char	*get_next_line(int fd)
 {

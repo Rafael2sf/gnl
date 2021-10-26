@@ -2,7 +2,8 @@
 	"files.associations": {
 		"get_next_line.h": "c",
 		"algorithm": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"get_next_line_bonus.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

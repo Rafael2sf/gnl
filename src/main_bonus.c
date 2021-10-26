@@ -6,12 +6,13 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:23:08 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/26 12:08:59 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 12:26:36 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 int	main(void)
 {

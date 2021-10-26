@@ -16,7 +16,7 @@ SRCSB=		\
 			get_next_line_utils_bonus.c\
 			main_bonus.c
 
-CVARS=		BUFFER_SIZE=1
+CVARS=		BUFFER_SIZE=103
 
 OBJS=		$(patsubst %.c,%.o,$(SRCS))
 OBJSB=		$(patsubst %.c,%.o,$(SRCSB))
