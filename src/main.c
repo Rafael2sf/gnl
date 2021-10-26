@@ -6,21 +6,22 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:23:08 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/25 22:55:25 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:24:43 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+#include <string.h>
 
 int	main(void)
 {
 
-	/* GNL main 	*/
+	/* GNL main */
 	char	*tmp;
 	int		fd;
 
-	fd = open("main.c", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	if (fd == -1)
 		return (1);
 	while (1)
@@ -33,8 +34,8 @@ int	main(void)
 	}
 	close(fd);
 
-/*	gnl_nextline main
-		
+
+/*	gnl_nextline main 
 
 	char 	*storage;
 	char	*ptr;
@@ -42,15 +43,15 @@ int	main(void)
 
 	line = NULL,
 	storage = (char *)malloc(sizeof(char) * 10);
-	ft_strlcpy(storage, "\nabc", 10);
+	
+	ft_strlcpy(storage, "\nabc\n", 10);
 	ptr = ft_strchr(storage, '\n');
 	if (ptr)
 		line = gnl_getline(&storage, (ptr - storage) + 1);
-	printf("l: %s", line);
-	printf("s: %s", storage);
+	printf("l:%s", line);
+	printf("s:%s", storage);
 */
-
-
+		
 /*	gnl_read main 
 	char	*storage = NULL;
 	char	*buf = NULL;
@@ -70,11 +71,17 @@ int	main(void)
 
 */
 
+/*  GNL Update main 
+	char *storage = ft_strdup("\nabcdef");
+	storage = gnl_update(&storage, 7, 1);
+	printf("%s\n", storage);
+*/
+
 /*
 	GNL trim main
 
 	char	*storage = ft_strdup(NULL);
-	char	*buf = ft_strdup("\n\nabc");
+	char	*buf = ft_strdup("abc\n");
 	char	*ptr = ft_strchr(buf, '\n');
 	char	*line = gnl_trim(&storage, &buf, (ptr - buf) + 1);
 	printf("(%s)(%s)", line, storage);

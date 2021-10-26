@@ -6,7 +6,7 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:59:43 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/25 23:34:29 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:28:59 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ char	*gnl_update(char **s, ssize_t i, ssize_t n)
 	char	*ptr;
 
 	ptr = NULL;
-	if ((i - n) > 0)
+	if ((i - n) >= 0)
 	{
 		ptr = (char *)malloc(sizeof(i - n + 1));
 		if (ptr)
 		{
+			ft_memcpy(ptr, *s + 1, i - n);
 			ptr[i - n] = '\0';
-			while ((--i - n) >= 0)
-				ptr[i - n] = (*s)[i];
 		}
 	}
 	free(*s);
+	(*s) = ptr;
 	return (ptr);
 }
 
@@ -46,37 +46,25 @@ char	*gnl_update(char **s, ssize_t i, ssize_t n)
  * copies the remaining on buffer to storage and returns the new line
  * @param s storage might be empity
  * @param b buffer containing a new line
- * @param len the size of the new line ended string in buffer 
+ * @param len the size of the new line-ended string in buffer 
 */
 char	*gnl_trim(char **s, char **b, ssize_t len)
 {	
 	char	*line;
 	char	*tmp;
 	ssize_t	i;
-	
-	// !Make this one malloc instead of 2 (strlen storage)
-	i = -1;
-	line = (char *)malloc(sizeof(char) * len + 1);
+
+	i = ft_strlen(*s);
+	line = (char *)malloc(sizeof(char) * len + i + 1);
 	if (!line)
 		return (NULL);
-	while (++i < len)
-		line[i] = (*b)[i];
-	line[i] = '\0';
+	ft_memcpy(line, *s, i);
+	ft_memcpy(line + i, *b, len);
+	line[i + len] = '\0';
+	tmp = ft_strdup((*b) + len);
 	if (*s)
-	{
-		tmp = ft_strjoin(*s, line);
-		free(line);
 		free(*s);
-		(*s) = NULL;
-		line = tmp;
-	}
-	// !
-	if ((*b)[i])
-	{
-		tmp = ft_strdup((*b) + len);
-		free(*s);
-		(*s) = tmp;
-	}
+	(*s) = tmp;
 	return (line);
 }
 
@@ -87,6 +75,7 @@ char	*gnl_trim(char **s, char **b, ssize_t len)
  */
 char	*gnl_getline(char **s, ssize_t n)
 {
+	char	*ptr;
 	char	*tmp;
 	ssize_t	i;
 
@@ -99,9 +88,9 @@ char	*gnl_getline(char **s, ssize_t n)
 	while (++i != n)
 		tmp[i] = (*s)[i];	
 	tmp[i] = '\0';
-	while ((*s)[i])
-		i++;
-	(*s) = gnl_update(s, i, n);
+	ptr = ft_strdup(*s + i);
+	free(*s);
+	(*s) = ptr;
 	return (tmp);
 }
 
@@ -127,8 +116,7 @@ char	*gnl_read(char **s, char **b, ssize_t i)
 		if (*s)
 		{
 			ptr = ft_strdup(*s);
-			if (*s)
-				free(*s);
+			free(*s);
 			(*s) = NULL;
 		}
 		return (ptr);
@@ -183,4 +171,3 @@ char	*get_next_line(int fd)
 	line = gnl_getline(&storage[fd], (buf - storage[fd]) + 1);
 	return (line);
 }
-

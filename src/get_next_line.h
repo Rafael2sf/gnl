@@ -6,7 +6,7 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:32:15 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/25 20:49:36 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 08:39:57 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char		*get_next_line(int fd);
 char		*gnl_getline(char **s, ssize_t n);
 char		*gnl_read(char **s, char **b, ssize_t i);
 char		*gnl_trim(char **s, char **b, ssize_t len);
+char		*gnl_update(char **s, ssize_t i, ssize_t n);
 
 size_t		ft_strlen(const char *s);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);

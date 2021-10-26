@@ -3,14 +3,15 @@ CFLAGS=		\
 			-g\
 			-Wall\
 			-Werror\
-			-Wextra
+			-Wextra\
+			-fsanitize=address
 
 SRCS=		\
 			get_next_line.c\
 			get_next_line_utils.c\
 			main.c
 
-CVARS=		BUFFER_SIZE=1000
+CVARS=		BUFFER_SIZE=1
 
 OBJS=		$(patsubst %.c,%.o,$(SRCS))
 

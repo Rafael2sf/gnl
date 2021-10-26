@@ -6,7 +6,7 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:32:06 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/25 22:02:31 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:00:35 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,12 @@ char	*ft_strdup(const char *s)
 	if (s)
 	{
 		len = ft_strlen(s);
-		if (len == 0)
+		if (!len)
 			return (NULL);
 		str = (char *)malloc(sizeof(char) * (len + 1));
 		if (!str)
 			return (NULL);
-		ft_strlcpy(str, s, len + 1);
+		ft_memcpy(str, s, len);
 		*(str + len) = '\0';
 		return (str);
 	}
