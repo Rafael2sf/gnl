@@ -6,7 +6,7 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 13:59:43 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/26 13:07:01 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 14:49:28 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*gnl_trim(char **s, char **b, ssize_t len)
  * @param n the size of the new line
  * @param return returns the new line
  */
-char	*gnl_getline(char **s, ssize_t n)
+static char	*gnl_getline(char **s, ssize_t n)
 {
 	char	*ptr;
 	char	*tmp;

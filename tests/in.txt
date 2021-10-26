@@ -1,0 +1,3 @@
+Hello World
+Please copy this to out.txt
+Arigato

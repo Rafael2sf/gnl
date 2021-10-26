@@ -6,7 +6,7 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:23:08 by rafernan          #+#    #+#             */
-/*   Updated: 2021/10/26 12:48:22 by rafernan         ###   ########.fr       */
+/*   Updated: 2021/10/26 14:35:53 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,21 @@
 
 int	main(void)
 {
-	char	*tmp;
-	int		fd;
+	int	in;
+	int	out;
+	char	*line;
 
-	fd = open("../tests/f1.txt", O_RDONLY);
-	if (fd == -1)
-		return (1);
+	line = NULL;
+	in = open("../tests/in.txt", O_RDONLY);
+	out = open("../tests/out.txt", O_WRONLY);
 	while (1)
 	{
-		tmp = get_next_line(0);
-		if (!tmp)
-			break ;
-		printf("%s", tmp);
-		free(tmp);
+		line = get_next_line(in);
+		if (!line)
+			break;
+		write(out, line, ft_strlen(line));
+		free(line);
 	}
-	close(fd);
-	return (0);
+	close(in);
+	close(out);
 }
