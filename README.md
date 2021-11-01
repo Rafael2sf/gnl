@@ -1,10 +1,6 @@
 # GET NEXT LINE
 
-```diff
-
-+ Finished
-
-```
+### 🟢 Finished
 
 # 42 lisbon
 
