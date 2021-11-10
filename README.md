@@ -1,6 +1,6 @@
 # GET NEXT LINE
 
-### 🟢 Finished
+# Important! Code cointains a bug, you cannot use malloc on the static variable! To be repaired soon!
 
 # 42 lisbon
 
@@ -21,6 +21,7 @@ static variables
 
 <h2> Grade </h2>
 
+(old)
 ### ⭐ 125%
 Mandatory + bonus
 
