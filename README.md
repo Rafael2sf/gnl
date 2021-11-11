@@ -1,6 +1,6 @@
 # GET NEXT LINE
 
-# Important! Code cointains a bug, you cannot use malloc on the static variable! To be repaired soon!
+# Only the v1 version was submited, the v2 version is similar but doesn't use malloc on the static variable, I recomend not using malloc because if you don't read from fd till the end, you might end up having a allocated static variable that is unreachable
 
 # 42 lisbon
 
@@ -14,15 +14,17 @@ static variables
 
 ## 📑 If you plan on doing this project, here are some tips
 
-+ Learn and understand static variables
-+ Plan your aproach before starting
+-   Learn and understand static variables
+-   Plan your aproach before starting
 
 </br>
 
 <h2> Grade </h2>
 
-(old)
+(v1)
+
 ### ⭐ 125%
+
 Mandatory + bonus
 
 4 days
