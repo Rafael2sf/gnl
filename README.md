@@ -22,9 +22,3 @@ static variables
 <h2> Grade </h2>
 
 (v1)
-
-### ⭐ 125%
-
-Mandatory + bonus
-
-4 days
