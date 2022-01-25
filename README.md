@@ -18,7 +18,3 @@ static variables
 -   Plan your aproach before starting
 
 </br>
-
-<h2> Grade </h2>
-
-(v1)
